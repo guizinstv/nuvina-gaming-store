@@ -40,7 +40,7 @@ export const quoteOrder = createServerFn({ method: "POST" })
   });
 
 export const getServiceStatus = createServerFn({ method: "GET" }).handler(async () => {
-  const keyauth = Boolean(process.env["KEYAUTH_OWNER_ID"] && process.env["KEYAUTH_APP_NAME"]);
+  const keyauth = Boolean(process.env["1Lz6tGEw5S"] && process.env["fulldbdloader"]);
   const gateway = Boolean(process.env["PAYMENT_GATEWAY_SECRET"]);
   return {
     checkedAt: new Date().toISOString(),
@@ -57,7 +57,7 @@ export const getServiceStatus = createServerFn({ method: "GET" }).handler(async 
 export const keyauthLogin = createServerFn({ method: "POST" })
   .inputValidator((i) => z.object({ username: z.string().trim().min(3).max(32), password: z.string().min(6).max(128) }).parse(i))
   .handler(async () => {
-    if (!process.env["KEYAUTH_OWNER_ID"] || !process.env["KEYAUTH_APP_NAME"]) {
+    if (!process.env["1Lz6tGEw5S"] || !process.env["fulldbdloader"]) {
       return { ok: false as const, error: "Sign-in is not available yet: the license server is not configured." };
     }
     return { ok: false as const, error: "Sign-in is being finalized. Please try again later." };
