@@ -13,7 +13,7 @@ export const Route = createFileRoute("/legal/$doc")({
     return { doc: params.doc };
   },
   head: ({ loaderData }) => {
-    const t = loaderData ? DOCS[loaderData.doc].title : "Legal";
+    const t = (loaderData && DOCS[loaderData.doc]?.title) || "Legal";
     return {
       meta: [
         { title: `${t} — Nuvina.wtf` },
@@ -30,7 +30,7 @@ export const Route = createFileRoute("/legal/$doc")({
 
 function Legal() {
   const { doc } = Route.useLoaderData();
-  const d = DOCS[doc];
+  const d = DOCS[doc]!;
   return (
     <>
       <PageHead kicker="/ Legal" title={d.title} />

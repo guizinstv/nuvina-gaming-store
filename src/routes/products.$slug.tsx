@@ -34,7 +34,7 @@ function ProductPage() {
   const { slug } = Route.useLoaderData();
   const p = getProduct(slug)!;
   const cart = useCart();
-  const [duration, setDuration] = useState<Duration>(p.plans[0].duration);
+  const [duration, setDuration] = useState<Duration>(p.plans[0]!.duration);
   const [qty, setQty] = useState(1);
   const [shot, setShot] = useState(0);
   const plan = p.plans.find((x) => x.duration === duration)!;
